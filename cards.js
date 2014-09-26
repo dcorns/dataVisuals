@@ -1,18 +1,14 @@
 'use strict';
+if (!datavis) var datavis = {};
+else alert('global object required to run is already being used');
+(datavis.Cards = function(){
 
-(function cards(){
-  var htDeck = document.getElementById('deck');
-  var iterations = document.getElementById('inIterations').value;
-  var shuffle = document.getElementById('btnShuffle');
-  var cut = document.getElementById('btnCut');
-
-  var cards = {
-    deck:[],
-    spades:[],
-    hearts:[],
-    clubs:[],
-    diamonds:[],
-    make:function(){
+    this.deck = [];
+    this.spades = [];
+    this.hearts = [];
+    this.clubs = [];
+    this.diamonds = [];
+    this.make = function(){
       //spades
           for (var c = 0; c < 13; c++){
             this.spades.push('<label class=spades>&#'+(127137+c).toString()+'</label>');
@@ -22,8 +18,8 @@
           }
           this.deck = this.deck.concat(this.spades, this.hearts, this.clubs, this.diamonds);
           return this.deck;
-        },
-    shuffle:function(times){
+        };
+    this.shuffle = function(times){
       var rndA, rndB;
       for (var t = 1; t <= times; t++){
         var halfdeckA = this.deck.slice(0,26);
@@ -54,30 +50,11 @@
           }
         }
       }
-    },
-    cut:function(){
+    };
+    this.cut = function(){
       var halfdeckA = this.deck.slice(0,26);
       var halfdeckB = this.deck.slice(26);
       this.deck = halfdeckB.concat(halfdeckA);
-    }
-  };
+    };
+  });
 
-  //initialize deck
-  htDeck.innerHTML = cards.make().join('');
-
-
-
-  //Events
-  shuffle.addEventListener('click', function(e){
-    cards.shuffle(iterations);
-    htDeck.innerHTML = cards.deck.join('');
-  },
-  false);
-
-  cut.addEventListener('click', function(e){
-    cards.cut();
-    htDeck.innerHTML = cards.deck.join('');
-  },
-  false);
-
-})();
