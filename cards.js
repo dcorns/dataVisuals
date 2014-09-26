@@ -2,7 +2,7 @@
 
 (function cards(){
   var htDeck = document.getElementById('deck');
-  var htsDeck = document.getElementById('sDeck');
+  var iterations = document.getElementById('inIterations').value;
   var shuffle = document.getElementById('btnShuffle');
   var cut = document.getElementById('btnCut');
 
@@ -69,7 +69,7 @@
 
   //Events
   shuffle.addEventListener('click', function(e){
-    cards.shuffle(1);
+    cards.shuffle(iterations);
     htDeck.innerHTML = cards.deck.join('');
   },
   false);
