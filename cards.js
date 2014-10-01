@@ -51,9 +51,9 @@ else alert('global object required to run is already being used');
         }
       }
     };
-    this.cut = function(){
-      var halfdeckA = this.deck.slice(0,26);
-      var halfdeckB = this.deck.slice(26);
+    this.cut = function(top){
+      var halfdeckA = this.deck.slice(0,top);
+      var halfdeckB = this.deck.slice(top);
       this.deck = halfdeckB.concat(halfdeckA);
     };
   });
