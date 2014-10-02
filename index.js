@@ -5,6 +5,7 @@
   };
   var shuffle = document.getElementById('btnShuffle');
   var cut = document.getElementById('btnCut');
+  var testShuffle = document.getElementById('btnTimeShuffle');
   var cutSize = function(){
     return document.getElementById('cutSize').value;
   };
@@ -12,8 +13,6 @@
   var cards = new datavis.Cards;
   console.dir(cards);
   htDeck.innerHTML = cards.make().join('');
-
-
 
 //Events
   shuffle.addEventListener('click', function(e){
@@ -27,4 +26,17 @@
       htDeck.innerHTML = cards.deck.join('');
     },
     false);
+
+  testShuffle.addEventListener('click', function(e){
+    var shuffleTimes = iterations();
+    var timeShuffle = new drcUtils.FunctionTimer(cards.shuffle);
+    if(shuffleTimes < 2 || null){
+      console.log(timeShuffle.run());
+    }
+    else{
+      console.log(timeShuffle.loopRun(shuffleTimes));
+    }
+    htDeck.innerHTML = cards.deck.join('');
+  });
+
 })();
