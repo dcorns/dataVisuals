@@ -6,6 +6,7 @@
   var shuffle = document.getElementById('btnShuffle');
   var cut = document.getElementById('btnCut');
   var testShuffle = document.getElementById('btnTimeShuffle');
+  var mergeSort = document.getElementById('btnMergeSort');
   var cutSize = function(){
     return document.getElementById('cutSize').value;
   };
@@ -26,6 +27,10 @@
       htDeck.innerHTML = cards.deck.join('');
     },
     false);
+
+  mergeSort.addEventListener('click', function(e){
+    console.log(cards.deck);
+  });
 
   testShuffle.addEventListener('click', function(e){
     var shuffleTimes = iterations();

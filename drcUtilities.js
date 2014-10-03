@@ -9,6 +9,7 @@ if (!drcUtils){
     this.endTime = 0;
     this.averageTime = 0;
     this.runTime = function (){return this.endTime - this.startTime;};
+
     this.run = function (){
       //Use the Date object to record times in milliseconds
       this.startTime = new Date().getTime();

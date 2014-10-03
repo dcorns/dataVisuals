@@ -19,42 +19,51 @@ else alert('global object required to run is already being used');
           this.deck = this.deck.concat(this.spades, this.hearts, this.clubs, this.diamonds);
           return this.deck;
         };
-    this.shuffle = function(times){
+
+    this.cut = function(tophalf){
+      var top = tophalf || 26;
+      var halfdeckA = this.deck.slice(0,top);
+      var halfdeckB = this.deck.slice(top);
+      this.deck = halfdeckB.concat(halfdeckA);
+      return {deckA: halfdeckA, deckB: halfdeckB};
+    };
+
+    this.shuffle = function(timesIn, split){
       var rndA, rndB;
+      var times = timesIn || 1;
+      console.log('shuffle called, ' + times);
       for (var t = 1; t <= times; t++){
-        var halfdeckA = this.deck.slice(0,26);
-        var halfdeckB = this.deck.slice(26);
+        var halfs = this.cut(split) || {deckA: 26, deckB: 26};
+        var halfdeckA = halfs.deckA;//this.deck.slice(0,26);
+        var halfdeckB = halfs.deckB;//this.deck.slice(26);
         this.deck.length = 0;
-        while (halfdeckA.length > 0 && halfdeckB.length > 0) {
+        while (halfs.deckA.length > 0 && halfs.deckB.length > 0) {
           rndA = (Math.random()*10).toFixed(0);
           if (rndA > 5 ) rndA = 1;
           rndB = (Math.random()*10).toFixed(0);
           if (rndB > 5 ) rndB = 1;
             for (var hdaCount = 0; hdaCount <= rndA; hdaCount++){
-              if (halfdeckA.length > 0){
-                this.deck.push(halfdeckA.shift());
+              if (halfs.deckA.length > 0){
+                this.deck.push(halfs.deckA.shift());
             }
           }
             for (var hdbCount = 0; hdbCount <= rndB; hdbCount++) {
-              if (halfdeckB.length > 0) {
-                this.deck.push(halfdeckB.shift());
+              if (halfs.deckB.length > 0) {
+                this.deck.push(halfs.deckB.shift());
               }
             }
         }
-        if (halfdeckA.length > 0) {
+        if (halfs.deckA.length > 0) {
           this.deck = this.deck.concat(halfdeckA);
         }
         else {
-          if(halfdeckB.length > 0){
+          if(halfs.deckB.length > 0){
             this.deck = this.deck.concat(halfdeckB);
           }
         }
+        console.log(t);
       }
     };
-    this.cut = function(top){
-      var halfdeckA = this.deck.slice(0,top);
-      var halfdeckB = this.deck.slice(top);
-      this.deck = halfdeckB.concat(halfdeckA);
-    };
+
   });
 
