@@ -1,0 +1,16 @@
+{
+  "name": "dataVisuals",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dcorns/dataVisuals",
+  "authors": [
+    "Dale Corns <drcorns@hotmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
