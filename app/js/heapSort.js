@@ -16,7 +16,7 @@ module.exports = function(){
   }
 };
 
-function buildMaxHeap(ary){//On complexity
+function buildMaxHeap(ary){//O(log (n)) complexity
   var i = Math.floor(((ary.length - 1)/2));
   for(i; i > -2; i--){
     ary = maxHeapify(ary, i)
@@ -24,7 +24,7 @@ function buildMaxHeap(ary){//On complexity
   return ary;
 }
 
-function maxHeapify(ary, idx){//Olog(n)
+function maxHeapify(ary, idx){//O(n)
     var root = ary[idx];
     var lidx = idx * 2 + 1, ridx = idx * 2 + 2;
     var left = ary[lidx];
@@ -44,7 +44,7 @@ function maxHeapify(ary, idx){//Olog(n)
   return ary;
 }
 
-function sortMaxHeap(mHeap, ary){
+function sortMaxHeap(mHeap, ary){//O(n log(n))
   var sortedHeap = ary || [];
   if(mHeap.length > 2){
     sortedHeap.push(mHeap[0]);

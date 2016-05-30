@@ -9,9 +9,6 @@ else alert('global object required to run is already being used');
 datavis.Cards =require('./cards');
 datavis.Ui = require('./ui');
 datavis.heapSort = require('./heapSort')();
-var ary = [23, 28, 12, 4, 43, 6, 19, 53, 5, 2];
-console.log(ary);
-console.log(datavis.heapSort.sort(ary));
 
 
 var deck = new datavis.Cards();
@@ -34,4 +31,7 @@ ui.shuffleClickEvent(function(){
 });
 ui.quickSortClickEvent(function(){
   alert('quick sort to come');
+});
+ui.heapSortClickEvent(function(){
+  console.log(deck.getCards());
 });

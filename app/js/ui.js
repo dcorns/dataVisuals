@@ -4,6 +4,7 @@ function Ui(){
     ,cut = document.getElementById('btnCut')
     ,testShuffle = document.getElementById('btnTimeShuffle')
     ,quickSort = document.getElementById('btnQuickSort')
+    ,heapSort = document.getElementById('btnHeapSort')
     ,htDeck = document.getElementById('deck')
     ,inIterations = document.getElementById('inIterations')
     ,cutSize =document.getElementById('cutSize');
@@ -33,6 +34,9 @@ function Ui(){
     },
     quickSortClickEvent: function(f){
       quickSort.addEventListener('click', f);
+    },
+    heapSortClickEvent: function(f){
+      heapSort.addEventListener('click', f);
     }
   };
 }
