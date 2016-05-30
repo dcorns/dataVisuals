@@ -32,13 +32,13 @@ function maxHeapify(ary, idx){//Olog(n)
     if (left > right && left > root){
       ary[idx] = left;
       ary[lidx] = root;
-      maxHeapify(ary, idx - 1);
+      maxHeapify(ary, lidx);
     }
     else{
       if(right > root){
         ary[idx] = right;
         ary[ridx] = root;
-        maxHeapify(ary, idx - 1);
+        maxHeapify(ary, ridx);
       }
     }
   return ary;
@@ -46,13 +46,10 @@ function maxHeapify(ary, idx){//Olog(n)
 
 function sortMaxHeap(mHeap, ary){
   var sortedHeap = ary || [];
-  console.log(mHeap);
-  console.log(sortedHeap);
   if(mHeap.length > 2){
     sortedHeap.push(mHeap[0]);
     mHeap.splice(0, 1, mHeap.pop());
-    console.log('after exchange: ', mHeap);
-    mHeap = buildMaxHeap(mHeap);
+    mHeap = maxHeapify(mHeap, 0);
     sortMaxHeap(mHeap, sortedHeap);
   }
   else if(mHeap[0] > mHeap[1]){
