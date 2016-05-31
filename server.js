@@ -18,3 +18,6 @@ var server = http.createServer(app);
 server.listen(process.env.PORT || 3000, function () {
   console.log('server running on port 3000');
 });
+
+//Add this line for testing with superTest
+module.exports = server;

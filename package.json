@@ -22,6 +22,7 @@
     "express": "4.9.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "debowerify": "0.8.2",
     "grunt": "0.4.5",
     "grunt-browserify": "^3.2.1",
@@ -30,6 +31,8 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-express-server": "0.4.19",
     "grunt-mocha": "0.4.11",
-    "grunt-simple-mocha": "0.4.0"
+    "grunt-simple-mocha": "0.4.0",
+    "mocha": "1.18.2",
+    "supertest": "^1.2.0"
   }
 }
